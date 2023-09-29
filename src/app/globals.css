@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-  /* background-color: rgb(17, 16, 16); */
-  background-image: url('../../public/Diseño.jpg');
+  background-color: rgb(44, 42, 42);
+  /* background-image: url('../../public/Diseño.jpg'); */
   background-size: cover;
   background-repeat: no-repeat;
   

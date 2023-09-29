@@ -22,7 +22,6 @@ export default function FormLogin() {
   const handelChange = (event: React.FormEvent<HTMLFormElement>) => {
     
     event.preventDefault();
-    console.log(event.target.id);
     
     const value = event.target.value;
     const property = event.target.id;
@@ -34,20 +33,22 @@ export default function FormLogin() {
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const email = event.target.email.value;
-    // const pass = event.target.password.value;
+
     const user = (await axios.get(`http://localhost:3000/api/user?email=${data.email}&password=${data.password}`)).data
     
     if(user) {
+      console.log(user);
+      
       router.push('/profile')
     }     
+    // esto me hace que se recarge la pagina
     else setError('El usuario no existe')
 
   }
 
   return (
     <>
-    <div disabled={ error ? true : false} className="text-red-800 bg-red-300 border-red-800 flex items-center justify-center">
+    <div disabled={ error ? 'block ' : 'hidden'} className=" ${error ?  : 'clase-dos'} text-red-800 bg-red-300 border-red-800 flex items-center justify-center">
       <h1>{error}</h1>
     </div>
     <form action="" onSubmit={handleLogin}>
