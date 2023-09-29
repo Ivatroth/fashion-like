@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* background-color: rgb(17, 16, 16); */
+  background-image: url('../../public/Diseño.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+.pagina-con-efecto {
+  opacity: 0; /* Inicialmente, el texto es completamente transparente */
+  transition: opacity 5s ease-in-out; /* Aplica una transición suave de 1 segundo */
+}
+
+.pagina-con-efecto.mostrar {
+  opacity: 1; /* Cuando se agrega la clase "mostrar", el texto se vuelve completamente visible */
+}

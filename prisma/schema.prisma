@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id      Int      @id @default(autoincrement())
+  username String   @unique
+  email    String   @unique
+  pass String @unique
+  reviews  Review[] // Relación uno a muchos con "Review"
+}
+
+
+model Product {
+  id    Int     @id @default(autoincrement())
+  name  String?
+  description String?
+  reviews  Review[] // Relación uno a muchos con "Review"
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  rating    Int
+  content   String?
+
+  userId    Int
+  productId Int
+
+  user     User     @relation(fields: [userId], references: [id])
+  product  Product  @relation(fields: [productId], references: [id])
+
+  @@unique([userId, productId]) // Garantiza que no puede haber múltiples reseñas para el mismo usuario y producto
+}
+
+
